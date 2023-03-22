@@ -29,6 +29,7 @@ int main(int argc, char* argv[])
 		printf("\n");
 		sleep(1);
 	}
+
 	return EXIT_SUCCESS;
 }
 

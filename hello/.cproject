@@ -73,4 +73,7 @@
 			<resource resourceType="PROJECT" workspacePath="/hello"/>
 		</configuration>
 	</storageModule>
+	<storageModule moduleId="com.qnx.tools.ide.qde.core.settings">
+		<dependencyChecking mode="ALL"/>
+	</storageModule>
 </cproject>

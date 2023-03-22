@@ -1,0 +1,31 @@
+hello.o: hello.c C:/Users/chabib/qos221/target/qnx7/usr/include/stdio.h \
+ C:/Users/chabib/qos221/target/qnx7/usr/include/sys/platform.h \
+ C:/Users/chabib/qos221/target/qnx7/usr/include/sys/ntohdr.h \
+ C:/Users/chabib/qos221/target/qnx7/usr/include/sys/compiler_gnu.h \
+ C:/Users/chabib/qos221/target/qnx7/usr/include/sys/cdefs.h \
+ C:/Users/chabib/qos221/target/qnx7/usr/include/aarch64/platform.h \
+ C:/Users/chabib/qos221/target/qnx7/usr/include/_pack64.h \
+ C:/Users/chabib/qos221/target/qnx7/usr/include/sys/target_nto.h \
+ C:/Users/chabib/qos221/target/qnx7/usr/include/_packpop.h \
+ C:/Users/chabib/qos221/target/qnx7/usr/include/yvals.h \
+ C:/Users/chabib/qos221/target/qnx7/usr/include/stdlib.h \
+ C:/Users/chabib/qos221/target/qnx7/usr/include/malloc.h \
+ C:/Users/chabib/qos221/target/qnx7/usr/include/alloca.h \
+ C:/Users/chabib/qos221/target/qnx7/usr/include/sys/wait.h \
+ C:/Users/chabib/qos221/target/qnx7/usr/include/signal.h \
+ C:/Users/chabib/qos221/target/qnx7/usr/include/sys/siginfo.h \
+ C:/Users/chabib/qos221/target/qnx7/usr/include/unistd.h \
+ C:/Users/chabib/qos221/target/qnx7/usr/include/confname.h \
+ C:/Users/chabib/qos221/target/qnx7/usr/include/sys/process.h \
+ C:/Users/chabib/qos221/target/qnx7/usr/include/sys/neutrino.h \
+ C:/Users/chabib/qos221/target/qnx7/usr/include/sys/types.h \
+ C:/Users/chabib/qos221/target/qnx7/usr/include/sched.h \
+ C:/Users/chabib/qos221/target/qnx7/usr/include/time.h \
+ C:/Users/chabib/qos221/target/qnx7/usr/include/limits.h \
+ C:/Users/chabib/qos221/target/qnx7/usr/include/sys/storage.h \
+ C:/Users/chabib/qos221/target/qnx7/usr/include/sys/states.h \
+ C:/Users/chabib/qos221/target/qnx7/usr/include/aarch64/neutrino.h \
+ C:/Users/chabib/qos221/target/qnx7/usr/include/sys/trace.h \
+ C:/Users/chabib/qos221/target/qnx7/usr/include/sys/time.h \
+ C:/Users/chabib/qos221/target/qnx7/usr/include/sys/select.h \
+ C:/Users/chabib/qos221/target/qnx7/usr/include/stdarg.h
