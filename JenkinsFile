@@ -1,0 +1,93 @@
+properties([pipelineTriggers([githubPush()])])
+
+pipeline{
+
+    //triggers {
+    //    pollSCM('') //Empty quotes tells it to build on a push
+    //}
+    
+    agent any
+    stages{
+		stage('Setup QNX Tools'){
+			steps{
+				script{
+					sh 'sudo mount /dev/xvdf /qnx/ || true'
+					sh '. /qnx/qnx710/qnxsdp-env.sh || true'
+					sh 'qcc -V || true'
+				}
+			}
+		}
+        stage('Build new Code'){
+			steps{
+				script{
+				    sh 'sudo cd /home/ec2-user/ && git init'
+					sh 'sudo cd /home/ec2-user/ && git config --global --add safe.directory /home/ec2-user'
+					sh 'sudo cd /home/ec2-user/ && git pull https://github.com/chabibQNX/QNXdemo'
+				}
+			}
+		}
+		stage("Launch QNX Instance"){
+            steps{
+                withCredentials([[
+                    $class: "AmazonWebServicesCredentialsBinding",
+                    credentialsId: "aws-ec2-cred",
+                    accessKeyVariable: "AWS_ACCESS_KEY_ID",
+                    secretKeyVariable: "AWS_SECRET_ACCESS_KEY"]]){
+                    
+                            sh 'aws ec2 run-instances --image-id ami-06a137fbe503e042d --instance-type t4g.nano --subnet-id subnet-02be3435f0984fe9c --security-group-ids sg-040135691b52a5585 --key-name christs_key_pair --region us-east-1 > /tmp/InstanceProfile.json'
+                            sh 'jq .Instances[0].InstanceId /tmp/InstanceProfile.json > /tmp/InstanceID.txt'
+                            sh 'sed -i \'s/"//g\' /tmp/InstanceID.txt'
+                            sh 'aws ec2 describe-instances --instance-ids $(cat /tmp/InstanceID.txt) --region us-east-1 > /tmp/Reservations.json'
+                            sh 'jq .Reservations[0].Instances[0].PublicIpAddress /tmp/Reservations.json > /tmp/InstanceIP.txt'
+                            sh 'sed -i \'s/"//g\' /tmp/InstanceIP.txt'
+                            sh 'cat /tmp/InstanceIP.txt'
+                        
+                    }
+            }
+            
+        }
+        stage('Connect to QNX Instance'){
+            steps{
+                script{
+                    retry(5){
+                        
+                        def r = sh returnStatus: true, script: 'ssh-keyscan -H $(cat /tmp/InstanceIP.txt) >> $HOME/.ssh/known_hosts'
+                        sh 'sshpass -p \'root\' ssh -tt root@$(cat /tmp/InstanceIP.txt) \' echo "Hello World" > /tmp/test.txt exit \' '
+                        if (r){
+                            sleep time: 10, unit: 'SECONDS'
+                            error 'failed to get known hosts authentication'
+                        }
+                    }
+                    
+                   
+                    
+                }
+            }    
+                
+        }
+        stage('Install QNX APP'){
+            steps{
+                script{
+                    
+                    //sh 'cd /home/ec2-user && git config --global --add safe.directory /home/ec2-user'
+                    //sh 'cd /home/ec2-user/ && git pull https://github.com/chabibQNX/QNXdemo'
+                    //sh 'chmod 777 /home/ec2-user/hello'
+                    //sh 'cp -r /home/ec2-user/hello /tmp/'
+                    //sh 'sshpass -p \'root\' ssh root@$(cat /tmp/InstanceIP.txt) \' cd /tmp && mkdir -p -m 777 /tmp/hello \' '
+                    
+                    // this should be installed in the Linux Server not script sh 'sudo yum install p7zip p7zip-plugins'
+                    //sh 'curl https://github.com/chabibQNX/QNXdemo/archive/refs/heads/main.zip | 7z a -tzip QNXDemo/main'
+					//sh '7z x QNXDemo/main.zip -o/tmp/apps'
+                    //sh 'sshpass -p \'root\' sudo scp -tt /home/ec2-user/hello/hello root@$(cat /tmp/InstanceIP.txt):/tmp '
+                    sh 'sudo scp -i /home/ec2-user/downloads/christs_key_pair.pem -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null /home/ec2-user/hello/hello root@$(cat /tmp/InstanceIP.txt):/tmp '
+                    sh 'sshpass -p \'root\' ssh -tt root@$(cat /tmp/InstanceIP.txt) \' chmod 777 /tmp/hello \' '
+                    //sh 'sshpass -p \'root\' ssh -tt root@$(cat /tmp/InstanceIP.txt) \' /tmp/hello \' '
+
+                }
+            }    
+                
+        }
+                 
+        }
+}
+
