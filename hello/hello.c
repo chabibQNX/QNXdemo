@@ -10,8 +10,6 @@ int main(int argc, char* argv[])
 
 	i = 0;
 
-
-
 	if (argc == 1)
 	{
 		printf("ERROR: Program has to be run with command-line arguments, for example: \n\n");
