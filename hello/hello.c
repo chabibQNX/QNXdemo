@@ -8,7 +8,7 @@ int main(int argc, char* argv[])
 {
 	int i, j;
 
-	i = 1;
+	i = 0;
 
 //
 
