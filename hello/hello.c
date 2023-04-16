@@ -10,7 +10,7 @@ int main(int argc, char* argv[])
 
 	i = 0;
 
-// Hello world
+// Hello world trying polling
 
 	if (argc == 1)
 	{
