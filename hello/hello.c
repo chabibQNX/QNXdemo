@@ -10,7 +10,7 @@ int main(int argc, char* argv[])
 
 	i = 0;
 
-// Hello world trying trigger free style
+// Finally WOrks!
 
 	if (argc == 1)
 	{
