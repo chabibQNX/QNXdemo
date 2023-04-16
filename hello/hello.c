@@ -10,7 +10,7 @@ int main(int argc, char* argv[])
 
 	i = 0;
 
-// Hello world trying polling every 1
+// Hello world trying trigger free style
 
 	if (argc == 1)
 	{
