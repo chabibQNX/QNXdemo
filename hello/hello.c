@@ -10,7 +10,7 @@ int main(int argc, char* argv[])
 
 	i = 0;
 
-// Hello world trying polling
+// Hello world trying polling every 1 min
 
 	if (argc == 1)
 	{
