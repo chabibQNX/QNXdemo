@@ -10,7 +10,7 @@ int main(int argc, char* argv[])
 
 	i = 0;
 
-// Finally WOrks!
+// Why did you stop working?
 
 	if (argc == 1)
 	{
