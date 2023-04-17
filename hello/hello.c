@@ -17,12 +17,22 @@ int main(int argc, char* argv[])
 		printf("ERROR: Program has to be run with command-line arguments, for example: \n\n");
 		printf("hello This is some text\n");
 		trace_logf(0, "Printed hello This is some text");
-		//return EXIT_FAILURE;
-		return EXIT_SUCCESS;
+		return EXIT_FAILURE;
+		//return EXIT_SUCCESS;
 	}
 
-	while (1)
-	{
+//	while (1)
+//	{
+//		printf("#%d: ", i++);
+//		for (j = 1; j < argc; j++)
+//		{
+//			printf("%s ", argv[j]);
+//			trace_logf(1, "Printed The actual entered String");
+//		}
+//		printf("\n");
+//		sleep(1);
+//	}
+	for (int x=0; x<5; x++){
 		printf("#%d: ", i++);
 		for (j = 1; j < argc; j++)
 		{
