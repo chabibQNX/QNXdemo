@@ -17,7 +17,8 @@ int main(int argc, char* argv[])
 		printf("ERROR: Program has to be run with command-line arguments, for example: \n\n");
 		printf("hello This is some text\n");
 		trace_logf(0, "Printed hello This is some text");
-		return EXIT_FAILURE;
+		//return EXIT_FAILURE;
+		return EXIT_SUCCESS;
 	}
 
 	while (1)
