@@ -10,7 +10,7 @@ int main(int argc, char* argv[])
 
 	i = 0;
 
-// Demoing code commi for Demo
+// Demoing code for Demo
 
 	if (argc == 1)
 	{
