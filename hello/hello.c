@@ -19,7 +19,8 @@ int main(int argc, char* argv[])
 		return EXIT_FAILURE;
 	}
 
-	while (1)
+	//while (1)
+	for(int x=0; x<5; x++)
 	{
 		printf("#%d: ", i++);
 		for (j = 1; j < argc; j++)
