@@ -10,6 +10,8 @@ int main(int argc, char* argv[])
 
 	i = 0;
 
+	//hello
+
 
 	if (argc == 1)
 	{
