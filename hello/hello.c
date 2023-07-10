@@ -10,7 +10,7 @@ int main(int argc, char* argv[])
 
 	i = 0;
 
-	//hello
+	//hello world
 
 
 	if (argc == 1)
