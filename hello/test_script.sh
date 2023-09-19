@@ -1,6 +1,8 @@
 #!/bin/ksh
 
 
+# New comment to test script 
+
 if command -v /tmp/hello; then
 
 	echo "testing scenario 1, no arguments passed"
