@@ -1,6 +1,5 @@
 #!/bin/ksh
 
-#hello world test 
 
 if command -v /tmp/hello; then
 
