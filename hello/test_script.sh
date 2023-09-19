@@ -1,5 +1,7 @@
 #!/bin/ksh
 
+#hello world test 
+
 if command -v /tmp/hello; then
 
 	echo "testing scenario 1, no arguments passed"
